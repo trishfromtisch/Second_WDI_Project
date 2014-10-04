@@ -1,8 +1,15 @@
 function getCategoryName(id) {
 	$.get("/categories/" + id, function(response){
-		var categoryName = response["name"]
+		console.log(response["name"])
+		
 	})
-	return categoryName
+
+		// 	$.ajax({
+		// type: "GET",
+		// url: "/categories/" + id,
+		// }).done(function(response){
+		// 	response
+		// })
 }
 
 var NameView = Backbone.View.extend({
@@ -21,24 +28,7 @@ var NameView = Backbone.View.extend({
 var WholeView = Backbone.View.extend({
 	tagName: "div",
 	className: "wholeView",
-	template: _.template('<article class="col-md-8 col-md-offset-2">'),
-			// <div class="row">
-			// 	<h3 id="contactName"><%=this.name%></h3>
-			// </div>
-			// <div class="row">
-			// 	<div id="image" class="col-md-4 col-md-offset-1">
-			// 		<img src="<%=this.picture%>">
-			// 	</div>
-			// </div>
-			// <div class="row">
-			// 	<h4 id= "categoryName"><%=this.category_name%></h4>
-			// </div>
-			// <div class="row">
-			// 	<p>Age: <%=this.age%><br>
-			// 		<span class="glyphicon glyphicon-home"> </span><%=this.address%><br>
-			// 		<span class="glyphicon glyphicon-earphone"> </span><%=this.phone_number%><br>
-			// 	</p>
-			// </div>'),
+	template: _.template('<article class="col-md-8 col-md-offset-2"><div class="row"><h3 id="contactName"><%=this.name%></h3></div><div class="row"><div id="image" class="col-md-4 col-md-offset-1"><img src="<%=this.picture%>"></div></div><div class="row"><h4 id= "categoryName"><%=this.category_name%></h4></div><div class="row"><p>Age: <%=this.age%><br><span class="glyphicon glyphicon-home"> </span><%=this.address%><br><span class="glyphicon glyphicon-earphone"> </span><%=this.phone_number%><br></p></div>'),
 
 	initialize: function(contactHash){
 		this.name = contactHash.name;
@@ -68,26 +58,29 @@ function getAndNameViews() {
 
 
 function getAndWholeView(id) {
-	$.get("/contacts/" + id, function(response){
-
+	console.log(id)
+		$.ajax({
+		type: "GET",
+		url: "/contacts/" + id,
+		}).done(function(response){
+			console.log(response)
 			var wholeView = new WholeView({
-				id: response["id"],
+			id: response["id"],
 			 name: response["name"],
 			 age: response["age"],
 			 address: response["address"],
 			 phone_number: response["phone_number"],
 			 picture: response["picture"],
-			 category_name: getCategoryName(response["category_id"])
+			 category_id: response["id"] 
 			})
 			$("main").append(view.el)
-		
-	})
+		})
 }
 
 
 
 $(function(){
-console.log(getCategoryName(1))
+
 
 	var AppRouter = Backbone.Router.extend({
 

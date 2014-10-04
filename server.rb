@@ -4,9 +4,20 @@ require_relative './lib/category'
 require_relative './lib/contact'
 require 'active_support'
 
+before do
+  if request.request_method == 'OPTIONS'
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "*"
+
+    halt 200
+  end
+end
+
 after do
   ActiveRecord::Base.connection.close
 end
+
+
 
 get("/") do
   content_type :html
