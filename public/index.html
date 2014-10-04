@@ -23,11 +23,11 @@
 		<div class="row">
 			<nav>
 				<div class="col-md-2">
-					<h4><a href="see_contacts">See Contacts</a></h4>
+					<h4><a href="/#see_contacts">See Contacts</a></h4>
 				</div>
 
 				<div class="col-md-2">
-					<h4><a href="add_contact">Add Contact</a></h4>
+					<h4><a href="/#add_contact">Add Contact</a></h4>
 				</div>
 
 			</nav>
@@ -40,7 +40,31 @@
 
 		</div>
 		<main>
+		
+		<article class='col-md-8 col-md-offset-2'>
+			<div class='row'>
+				<h3 id='contactName'><%=this.name%></h3>
+			</div>
+			<div class='row'>
+				<div id='image' class='col-md-4 col-md-offset-1'>
+					<img src='<%=this.picture%>'>
+				</div>
+			</div>
+			<div class='row'>
+				<h4 id= 'categoryName'><%=this.category_name%></h4>
+			</div>
+			<div class='row'>
+				<p>Age: <%=this.age%><br>
+					<span class='glyphicon glyphicon-home'> </span><%=this.address%><br>
+					<span class='glyphicon glyphicon-earphone'> </span><%=this.phone_number%><br>
 
+
+
+				</p>
+
+			</div>
+
+		</article>
 
 		</main>
 	</div>
