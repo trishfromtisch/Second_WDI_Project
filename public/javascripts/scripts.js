@@ -1,6 +1,13 @@
+function getCategoryName(id) {
+	$.get("/categories/" + id, function(response){
+		var categoryName = response["name"]
+	})
+	return categoryName
+}
+
 var NameView = Backbone.View.extend({
 	tagName: "li",
-	template: _.template("<div class='contactName'><a href='/#show/:<%= this.id %>''><%= this.name %> </a></div>"),
+	template: _.template("<div class='contactName'><a href='/#show/<%= this.id %>''><%= this.name %> </a></div>"),
 
 	initialize: function(contactHash){
 		this.name = contactHash.name;
@@ -12,29 +19,26 @@ var NameView = Backbone.View.extend({
 });
 
 var WholeView = Backbone.View.extend({
+	tagName: "div",
 	className: "wholeView",
-	template: _.template("
-		<article class='col-md-8 col-md-offset-2'>
-				<h3 id='contactName'><%=this.name%></h3>
-
-			<div class='row'>
-				<h4 id= 'categoryName'><%=this.category_name%></h4>
-			</div>
-
-			<div class='row'>
-				<div id='image' class='col-md-4 col-md-offset-1'>
-					<img src='<%=this.picture%>'>
-				</div>
-			</div>
-
-			<div class='row'>
-				<p>Age: <%=this.age%><br>
-					<span class='glyphicon glyphicon-home'> </span><%=this.address%><br>
-					<span class='glyphicon glyphicon-earphone'> </span><%=this.phone_number%><br>
-				</p>
-			</div>
-		</article>
-		"),
+	template: _.template('<article class="col-md-8 col-md-offset-2">'),
+			// <div class="row">
+			// 	<h3 id="contactName"><%=this.name%></h3>
+			// </div>
+			// <div class="row">
+			// 	<div id="image" class="col-md-4 col-md-offset-1">
+			// 		<img src="<%=this.picture%>">
+			// 	</div>
+			// </div>
+			// <div class="row">
+			// 	<h4 id= "categoryName"><%=this.category_name%></h4>
+			// </div>
+			// <div class="row">
+			// 	<p>Age: <%=this.age%><br>
+			// 		<span class="glyphicon glyphicon-home"> </span><%=this.address%><br>
+			// 		<span class="glyphicon glyphicon-earphone"> </span><%=this.phone_number%><br>
+			// 	</p>
+			// </div>'),
 
 	initialize: function(contactHash){
 		this.name = contactHash.name;
@@ -60,12 +64,7 @@ function getAndNameViews() {
 	})
 }
 
-function getCategoryName(id) {
-	$.get("/categories/" + id, function(response){
-		categoryName = response["name"]
-	})
-	return categoryName
-}
+
 
 
 function getAndWholeView(id) {
