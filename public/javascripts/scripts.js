@@ -7,15 +7,15 @@ $(function(){
 				html += "<h3 class='modal-title contactName'>" + contact['name']  + "</h3></div>"
 				html += "<div class='modal-body'><div class='row'><div class='col-md-4 col-md-offset-1 image'><img src='" + contact['picture'] + "'></div></div>"
 				html += "<div class='row'><div class='col-md-4 col-md-offset-2'><p>Age: " + contact['age'] + "<br><span class='glyphicon glyphicon-home'> </span>" + contact['address']
-				html += "<br><span class='glyphicon glyphicon-earphone'> </span>" + contact['phone_number'] + "<br><button type='button' class='btn btn-primary edit'>Edit</button> <button type='button' id='" + contact["id"] + "' class='btn btn-primary delete'>Delete</button></p></div></div>"
-				html += "<form style='display:none' role='form' class='editContact'> <div class='form-group'> "
-				html += "<label for='newNameInput'>New Name</label> <input type='text' class='form-control' id='newNameInput' placeholder='Name'> </div>"
-				html += "<div class='form-group'> <label for='newAgeInput'>Age</label> <input type='text' class='form-control col-sm-1' id='newAgeInput' placeholder='Age'> </div>"
-				html += "<div class='form-group'> <label for='newAddressInput'>Address</label> <input type='text' class='form-control' id='newAddressInput' placeholder='Address'> </div>"
-				html += "<div class='form-group'> <label for='newPhoneInput'>Phone Number</label> <input type='tel' class='form-control' id='newPhoneInput'> </div>"
-				html += "<div class='form-group'> <label for='newPictureInput'>Picture</label> <input type='text' class='form-control' id='newPictureInput' placeholder='Image URL'> </div>"
-				html += "<div class='form-group'> <label for='newCategoryInput'>Category</label> <select id='newCategoryInput'> <option value='1'>Hero</option> <option value='2'>Love Interest</option> <option value='3'>Memorable Character</option> </select>"
-				html += "<button type='button' class='" + contact["id"] + "btn btn-primary editContactButton'>Save changes</button> </div> </form>"
+				html += "<br><span class='glyphicon glyphicon-earphone'> </span>" + contact['phone_number'] + "<br><button type='button' class='" + contact["id"] + " btn btn-primary editToggle'>Edit</button> <button type='button' id='" + contact["id"] + "' class='btn btn-primary delete'>Delete</button></p></div></div>"
+				html += "<form role='form' class='" + contact["id"] + " editContact'> <div class='form-group'> "
+				html += "<label for='newNameInput'>Name</label> <input type='text' class='form-control newNameInput' placeholder='New Name'> </div>"
+				html += "<div class='form-group'> <label for='newAgeInput'>Age</label> <input type='text' class='form-control col-sm-1 newAgeInput' placeholder='New Age'> </div>"
+				html += "<div class='form-group'> <label for='newAddressInput'>Address</label> <input type='text' class='form-control newAddressInput' placeholder='New Address'> </div>"
+				html += "<div class='form-group'> <label for='newPhoneInput'>Phone Number</label> <input type='tel' class='form-control newPhoneInput' placeholder='xxx-xxx-xxxx'> </div>"
+				html += "<div class='form-group'> <label for='newPictureInput'>Picture</label> <input type='text' class='form-control newPictureInput' placeholder='New Image URL'> </div>"
+				html += "<div class='form-group'> <label for='newCategoryInput'>New Category</label> <select class='newCategoryInput'> <option value='1'>Hero</option> <option value='2'>Love Interest</option> <option value='3'>Memorable Character</option> </select>"
+				html += "<button type='button' class='" + contact["id"] + " btn btn-primary editContactButton'>Save changes</button> </div> </form>"
 				html += "<div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div></div></div></div>"
 
 
@@ -38,6 +38,9 @@ $(function(){
 
 	initialGet()
 
+	$('button.editToggle').click(function(){
+		console.log("clicked toggle");
+	})
 
 	$('#addContactButton').click(function(){
 		var nameInput = $("#nameInput");
