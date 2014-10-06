@@ -23,15 +23,55 @@
 		<div class="row">
 			<nav>
 				<div class="col-md-2">
-					<h4><a href="/#see_contacts">See Contacts</a></h4>
+					<button class="btn btn-info btn-md" id="addContact" data-toggle="modal" data-target="#addContactModal">Add Someone</button>
 				</div>
-
-				<div class="col-md-2">
-					<h4><a href="/#add_contact">Add Contact</a></h4>
+				<div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				        <h4 class="modal-title" id="addContactModalLabel">Add Someone</h4>
+				      </div>
+				      <div class="modal-body">
+				      	<form role="form" id="addCharacter">
+								  <div class="form-group">
+								    <label for="nameInput">Name</label>
+								    <input type="text" class="form-control" id="nameInput" placeholder="Name">
+								  </div>
+								  <div class="form-group">
+								    <label for="ageInput">Age</label>
+								    <input type="text" class="form-control col-sm-1" id="ageInput" placeholder="Age">
+								  </div>
+								  <div class="form-group">
+								    <label for="addressInput">Address</label>
+								    <input type="text" class="form-control" id="addressInput" placeholder="Address">
+								  </div>
+								  <div class="form-group">
+								    <label for="phoneInput">Phone Number</label>
+								    <input type="tel" class="form-control" id="phoneInput">
+								  </div>
+								  <div class="form-group">
+								    <label for="pictureInput">Picture</label>
+								    <input type="text" class="form-control" id="pictureInput" placeholder="Image URL">
+								  </div>
+								  <div class="form-group">
+								    <label for="categoryInput">Category</label>
+								  	<select id="categoryInput">
+											<option value="1">Hero</option>
+											<option value="2">Love Interest</option>
+											<option value="3">Memorable Character</option>
+										</select>
+									</div>
+								</form>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary" data-dismiss="modal" id="addContactButton">Save changes</button>
+				      </div>
+				    </div>
+				  </div>
 				</div>
-
 			</nav>
-			<div class="col-md-3 col-md-offset-5" id="searchDiv">
+			<div class="col-md-5 col-md-offset-5" id="searchDiv">
 				<form class="form-inline" role="form">
 				    <input type="text" class="form-control" id="searchWord" placeholder="Keyword">
 				  <button class="btn btn-default btn-sm" id="search">Search</button>
@@ -59,7 +99,37 @@
 </body>
 </html>
 
-
+				      	<form style='display:none' role='form' class='editCharacter'>
+								  <div class='form-group'>
+								    <label for='newNameInput'>New Name</label>
+								    <input type='text' class='form-control' id='newNameInput' placeholder='Name'>
+								  </div>
+								  <div class='form-group'>
+								    <label for='newAgeInput'>Age</label>
+								    <input type='text' class='form-control col-sm-1' id='newAgeInput' placeholder='Age'>
+								  </div>
+								  <div class='form-group'>
+								    <label for='newAddressInput'>Address</label>
+								    <input type='text' class='form-control' id='newAddressInput' placeholder='Address'>
+								  </div>
+								  <div class='form-group'>
+								    <label for='newPhoneInput'>Phone Number</label>
+								    <input type='tel' class='form-control' id='newPhoneInput'>
+								  </div>
+								  <div class='form-group'>
+								    <label for='newPictureInput'>Picture</label>
+								    <input type='text' class='form-control' id='newPictureInput' placeholder='Image URL'>
+								  </div>
+								  <div class='form-group'>
+								    <label for='newCategoryInput'>Category</label>
+								  	<select id='newCategoryInput'>
+											<option value='1'>Hero</option>
+											<option value='2'>Love Interest</option>
+											<option value='3'>Memorable Character</option>
+										</select>
+										<button type="button" class="btn btn-primary" class="addContactButton">Save changes</button>
+									</div>
+								</form>
 
         
 
