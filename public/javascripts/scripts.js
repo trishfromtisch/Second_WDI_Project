@@ -7,9 +7,17 @@ $(function(){
 				html += "<h3 class='modal-title contactName'>" + contact['name']  + "</h3></div>"
 				html += "<div class='modal-body'><div class='row'><div class='col-md-4 col-md-offset-1 image'><img src='" + contact['picture'] + "'></div></div>"
 				html += "<div class='row'><div class='col-md-4 col-md-offset-2'><p>Age: " + contact['age'] + "<br><span class='glyphicon glyphicon-home'> </span>" + contact['address']
-				html += "<br><span class='glyphicon glyphicon-earphone'> </span>" + contact['phone_number'] + "<br><button type='button' class='btn btn-primary edit'>Edit</button></p></div></div>"
-				html += "<div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
-				html += "<button type='button' class='btn btn-primary'>Save changes</button></div></div></div></div>"
+				html += "<br><span class='glyphicon glyphicon-earphone'> </span>" + contact['phone_number'] + "<br><button type='button' class='btn btn-primary edit'>Edit</button> <button type='button' id='" + contact["id"] + "' class='btn btn-primary delete'>Delete</button></p></div></div>"
+				html += "<form style='display:none' role='form' class='editContact'> <div class='form-group'> "
+				html += "<label for='newNameInput'>New Name</label> <input type='text' class='form-control' id='newNameInput' placeholder='Name'> </div>"
+				html += "<div class='form-group'> <label for='newAgeInput'>Age</label> <input type='text' class='form-control col-sm-1' id='newAgeInput' placeholder='Age'> </div>"
+				html += "<div class='form-group'> <label for='newAddressInput'>Address</label> <input type='text' class='form-control' id='newAddressInput' placeholder='Address'> </div>"
+				html += "<div class='form-group'> <label for='newPhoneInput'>Phone Number</label> <input type='tel' class='form-control' id='newPhoneInput'> </div>"
+				html += "<div class='form-group'> <label for='newPictureInput'>Picture</label> <input type='text' class='form-control' id='newPictureInput' placeholder='Image URL'> </div>"
+				html += "<div class='form-group'> <label for='newCategoryInput'>Category</label> <select id='newCategoryInput'> <option value='1'>Hero</option> <option value='2'>Love Interest</option> <option value='3'>Memorable Character</option> </select>"
+				html += "<button type='button' class='" + contact["id"] + "btn btn-primary editContactButton'>Save changes</button> </div> </form>"
+				html += "<div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div></div></div></div>"
+
 
 		if (contact["category_id"] == "1") {
 			$("ul#heroesUl").append(html);
